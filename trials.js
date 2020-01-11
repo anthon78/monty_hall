@@ -4,6 +4,7 @@ let prizeInSelectedTotal = 0;
 let prizeInHiddenTotal = 0;
 
 for (let i = 0; i < 10000; i++) {
+  //each door is resembled by a number betwen 1 and 3
   let prizeDoor = Math.floor(Math.random() * 3) + 1;
   let selectedDoor = Math.floor(Math.random() * 3) + 1;
   let revealedDoor = getRevealedDoor(prizeDoor, selectedDoor);
@@ -21,6 +22,7 @@ console.log(`Prize in Hidden door: ${(percentInHiddenDoor * 100).toFixed(2)}%`);
 
 function getRevealedDoor(prizeDoor, selectedDoor) {
   if (prizeDoor === selectedDoor) {
+    //NOTE: no need to alternate between +1 and +2 here. Doesn't impact the odds
     return prizeDoor % 3 + 1;
   }
   return 6 - prizeDoor - selectedDoor;
